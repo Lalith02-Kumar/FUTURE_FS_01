@@ -140,9 +140,20 @@ document.addEventListener('DOMContentLoaded', () => {
           form.style.display = 'none';
           formSuccess.style.display = 'block';
         } else {
-          throw new Error('Failed to send');
+          const errorData = await response.json().catch(() => ({}));
+          let errorMsg = 'Failed to send message. Try again.';
+          
+          if (errorData.errors && errorData.errors.length > 0) {
+            errorMsg = errorData.errors[0].msg;
+          } else if (errorData.message) {
+            errorMsg = errorData.message;
+          }
+          
+          throw new Error(errorMsg);
         }
       } catch (err) {
+        const errorP = formError.querySelector('p');
+        if (errorP) errorP.textContent = err.message;
         formError.style.display = 'block';
         submitBtn.textContent = 'Send message \u2192';
         submitBtn.disabled = false;
