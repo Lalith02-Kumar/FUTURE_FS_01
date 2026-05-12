@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/contact', require('./routes/contact'));
+app.use('/api/blogs', require('./routes/blogs'));
 
 if (process.env.NODE_ENV !== 'production') {
   const PORT = process.env.PORT || 5000;

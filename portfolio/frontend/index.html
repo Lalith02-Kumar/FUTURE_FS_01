@@ -6,286 +6,224 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lalith / Developer</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./css/style.css?v=4">
-  <script src="./js/main.js?v=4" defer></script>
+  <link rel="stylesheet" href="./css/style.css?v=5">
+  <script src="./js/main.js?v=5" defer></script>
 </head>
 
 <body>
 
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="#" class="logo">Portfolio.</a>
+    <div class="nav-links desktop-only">
+      <a href="#about" class="nav-link-item">About</a>
+      <a href="#work" class="nav-link-item">Projects</a>
+      <a href="#blog" class="nav-link-item">Blog</a>
+      <a href="#contact" class="nav-link-item">Contact</a>
+    </div>
+    <button class="hamburger mobile-only" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
   <!-- Mobile Menu Overlay -->
   <div class="menu-overlay" id="menuOverlay">
     <nav class="overlay-nav">
-      <a href="#work" class="nav-link">Work</a>
       <a href="#about" class="nav-link">About</a>
-      <a href="#certifications" class="nav-link">Certifications</a>
+      <a href="#work" class="nav-link">Projects</a>
+      <a href="#blog" class="nav-link">Blog</a>
       <a href="#contact" class="nav-link">Contact</a>
     </nav>
   </div>
 
-  <!-- Navigation -->
-  <nav class="nav">
-    <a href="#" class="logo">
-      <span class="logo-line1">lalith/</span>
-      <span class="logo-line2">dev</span>
-    </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </nav>
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="hero-content">
+        <p class="hero-hello fade-up">Hello, I am</p>
+        <h1 class="hero-name fade-up">Lalith Kumar</h1>
+        <h2 class="hero-title fade-up">Tech Enthusiast.</h2>
+        <p class="hero-bio fade-up">
+          I'm a 2nd-year CSE student passionate about building exceptional and accessible digital experiences for the web and mobile devices.
+        </p>
+        <div class="hero-buttons fade-up">
+          <a href="#work" class="btn-primary">View Work &rarr;</a>
+          <a href="#contact" class="btn-secondary">Contact Me</a>
+        </div>
+      </div>
+    </section>
 
-  <!-- Hero Section -->
-  <section id="hero">
-    <div class="hero-content">
-      <span class="hero-sub">computer science &middot; pvpsit &middot; vijayawada</span>
-      <h1 class="hero-heading">
-        <span class="h-dark">lalith/</span><span class="h-accent">developer</span>
-      </h1>
-      <p class="hero-bio">
-        I'm a 2nd-year CSE student passionate about building exceptional and accessible digital experiences for the web
-        and mobile devices.
+    <!-- About Section -->
+    <section id="about" class="section">
+      <h2 class="section-heading fade-up">About Me</h2>
+      <div class="about-grid">
+        <div class="about-left">
+          <p class="fade-up">I'm Lalith, a Computer Science student at PVPSIT, Vijayawada &mdash; currently in my second year with a CGPA of 9.03. I enjoy building full-stack web applications and love turning ideas into real, working products.</p>
+          <p class="fade-up">When I'm not coding, you'll find me grinding LeetCode, participating in hackathons, or serving as an NCC cadet. I was also a student coordinator for SITAR 2K25 and participated in the Adobe India Hackathon.</p>
+          <a href="./assets/Lalith-resume.pdf" class="cv-link fade-up" download="Lalith-resume.pdf" target="_blank" style="margin-top: 1rem; display: inline-block;">Download CV &rarr;</a>
+        </div>
+        <div class="about-right fade-up">
+          <div class="skills-header">
+            <h3 class="skills-heading">Core Skills</h3>
+            <div class="skills-tabs">
+              <span class="tab active">Technical</span>
+            </div>
+          </div>
+          
+          <div class="skills-category">
+            <h4 class="cat-title"><span class="bullet"></span>Programming Languages</h4>
+            <div class="skills-row">
+              <span class="skill-pill">C</span>
+              <span class="skill-pill">Java</span>
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">JavaScript</span>
+              <span class="skill-pill">MySQL</span>
+            </div>
+          </div>
+          <div class="skills-category">
+            <h4 class="cat-title"><span class="bullet"></span>Web Technologies</h4>
+            <div class="skills-row">
+              <span class="skill-pill">HTML</span>
+              <span class="skill-pill">CSS</span>
+              <span class="skill-pill">Node.js</span>
+              <span class="skill-pill">Express.js</span>
+            </div>
+          </div>
+          <div class="skills-category">
+            <h4 class="cat-title"><span class="bullet"></span>Version Control</h4>
+            <div class="skills-row">
+              <span class="skill-pill">Git</span>
+              <span class="skill-pill">GitHub</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="work" class="section">
+      <h2 class="section-heading fade-up">Selected Works</h2>
+      <div class="works-grid">
+        <div class="work-card fade-up">
+          <div class="work-card-header">
+            <h3 class="work-card-title">MedAR — AR-based medical training</h3>
+            <div class="work-card-links">
+              <a href="https://github.com/Lalith02-Kumar/MedAR-Training-Platform" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+              <a href="https://github.com/Lalith02-Kumar/MedAR-Training-Platform" target="_blank" aria-label="External Link"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+            </div>
+          </div>
+          <p class="work-card-desc">An AR-based medical training platform with interactive simulation modules, dashboards for students, instructors, and administrators. Includes quizzes, progress tracking, and a leaderboard system.</p>
+          <div class="work-card-tags">
+            <span class="wtag">HTML</span><span class="wtag">CSS</span><span class="wtag">JavaScript</span><span class="wtag">Node.js</span><span class="wtag">Express.js</span><span class="wtag">MySQL</span>
+          </div>
+        </div>
+
+        <div class="work-card fade-up">
+          <div class="work-card-header">
+            <h3 class="work-card-title">Skilltern — Internship matching platform</h3>
+            <div class="work-card-links">
+              <a href="https://github.com/Lalith02-Kumar/SkillTern" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+              <a href="https://github.com/Lalith02-Kumar/SkillTern" target="_blank" aria-label="External Link"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+            </div>
+          </div>
+          <p class="work-card-desc">A web-based platform that matches student skills with real internship opportunities. Features responsive profile creation, internship browsing, and smart filtering and recommendation logic.</p>
+          <div class="work-card-tags">
+            <span class="wtag">HTML</span><span class="wtag">CSS</span><span class="wtag">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="work-card fade-up">
+          <div class="work-card-header">
+            <h3 class="work-card-title">Portfolio — Personal developer site</h3>
+            <div class="work-card-links">
+              <a href="https://github.com/Lalith02-Kumar" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+              <a href="https://github.com/Lalith02-Kumar" target="_blank" aria-label="External Link"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
+            </div>
+          </div>
+          <p class="work-card-desc">This portfolio site — built with a montone.studio-inspired lavender aesthetic, cursor spotlight effect, and a Node.js + MySQL backend for the contact form.</p>
+          <div class="work-card-tags">
+            <span class="wtag">HTML</span><span class="wtag">CSS</span><span class="wtag">JavaScript</span><span class="wtag">Node.js</span><span class="wtag">MySQL</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Articles / Blog Section -->
+    <section id="blog" class="section">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <h2 class="section-heading fade-up" style="margin-bottom: 0;">Latest Articles</h2>
+        <button id="openBlogModalBtn" class="btn-secondary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem; cursor: pointer;">+ Post New Blog</button>
+      </div>
+      <div id="blogListContainer" class="works-grid">
+        <p id="noBlogsMsg" style="color: #8885A0; grid-column: 1 / -1;">No blogs found. Be the first to post!</p>
+      </div>
+    </section>
+
+    <!-- New Blog Modal -->
+    <div id="blogModal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 style="font-size: 1.5rem; margin: 0; color: #111;">Create New Post</h3>
+          <button id="closeBlogModalBtn" class="close-btn">&times;</button>
+        </div>
+        <form id="blogForm" class="contact-form" style="margin-top: 1.5rem;">
+          <div class="form-field">
+            <input type="text" id="blogTitle" placeholder="Blog Title" required>
+          </div>
+          <div class="form-field">
+            <textarea id="blogContent" rows="8" placeholder="Write your content here..." required></textarea>
+          </div>
+          <button type="submit" id="blogSubmitBtn" class="contact-submit">Publish Post</button>
+          <div id="blogError" class="form-message" style="display: none;">
+            <p style="color: #c0392b;">Failed to post blog.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <h2 class="section-heading-huge center fade-up">Let's work together</h2>
+      <p class="contact-sub center fade-up">
+        I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
       </p>
-      <div class="hero-buttons">
-        <a href="#work" class="hero-btn-primary">View Work &rarr;</a>
-        <a href="#contact" class="hero-btn-secondary">Contact Me</a>
-      </div>
-      <div id="scrollIndicator" class="scroll-indicator">
-        <div class="scroll-line"></div>
-        <span class="scroll-label">scroll</span>
-      </div>
-    </div>
-  </section>
 
-  <!-- About Section -->
-  <section class="section" id="about">
-    <span class="section-label">About me</span>
-    <div class="about-grid">
-      <div class="about-left">
-        <p class="bio">
-          I'm Lalith, a Computer Science student at PVPSIT, Vijayawada &mdash; currently in my second year with a CGPA
-          of 9.03. I enjoy building full-stack web applications and love turning ideas into real, working products.
-        </p>
-        <p class="bio">
-          When I'm not coding, you'll find me grinding LeetCode, participating in hackathons, or serving as an NCC
-          cadet. I was also a student coordinator for SITAR 2K25 and participated in the <a href="https://www.linkedin.com/posts/lalith-kumar-reddy-821621379_adobehackathon-activity-7362801447421263873-7-Ya" target="_blank" style="color: inherit; text-decoration: underline;">Adobe India Hackathon</a>.
-        </p>
-        <p class="academic-info">
-          B.Tech CSE &middot; PVPSIT &middot; 2024–present &middot; CGPA: 9.03
-        </p>
-        <a href="./assets/Lalith-resume.pdf" class="cv-link" download="Lalith-resume.pdf" target="_blank">Download CV &rarr;</a>
-      </div>
-      <div class="about-right">
-        <div class="skills-group">
-          <span class="skills-group-label">Programming Languages</span>
-          <div class="skills-row">
-            <span class="skill-pill">C</span>
-            <span class="skill-pill">Java</span>
-            <span class="skill-pill">Python</span>
-            <span class="skill-pill">JavaScript</span>
-            <span class="skill-pill">MySQL</span>
+      <div class="contact-form-container fade-up">
+        <form id="contactForm" class="contact-form">
+          <div class="form-field">
+            <input type="text" id="name" placeholder="Name" required>
           </div>
-        </div>
-        <div class="skills-group">
-          <span class="skills-group-label">Web Technologies</span>
-          <div class="skills-row">
-            <span class="skill-pill">HTML</span>
-            <span class="skill-pill">CSS</span>
-            <span class="skill-pill">Node.js</span>
-            <span class="skill-pill">Express.js</span>
+          <div class="form-field">
+            <input type="email" id="email" placeholder="Email" required>
           </div>
-        </div>
-        <div class="skills-group">
-          <span class="skills-group-label">Version Control</span>
-          <div class="skills-row">
-            <span class="skill-pill">Git</span>
-            <span class="skill-pill">GitHub</span>
+          <div class="form-field">
+            <textarea id="message" rows="5" placeholder="Message" required></textarea>
           </div>
+          <button type="submit" id="submitBtn" class="contact-submit">Send Message</button>
+        </form>
+        <div id="formSuccess" class="form-message" style="display: none;">
+          <p>Thanks! I'll get back to you soon.</p>
+        </div>
+        <div id="formError" class="form-message" style="display: none;">
+          <p>Failed to send message. Try again.</p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Work Section -->
-  <section class="section" id="work">
-    <span class="section-label">Selected work</span>
-    <div class="work-list">
-      <div class="work-item">
-        <div class="work-header">
-          <div class="work-num">01</div>
-          <h3 class="work-title"><span class="work-slash">/</span>MedAR — AR-based medical training</h3>
-        </div>
-        <p class="work-desc">An AR-based medical training platform with interactive simulation modules, dashboards for
-          students, instructors, and administrators. Includes quizzes, progress tracking, and a leaderboard system.</p>
-        <div class="work-meta">
-          <div class="work-tags">
-            <span class="wtag">HTML</span>
-            <span class="wtag">CSS</span>
-            <span class="wtag">JavaScript</span>
-            <span class="wtag">Node.js</span>
-            <span class="wtag">Express.js</span>
-            <span class="wtag">MySQL</span>
-          </div>
-          <div class="work-links">
-            <a href="https://github.com/Lalith02-Kumar/MedAR-Training-Platform" target="_blank" class="work-link">GitHub &#x2197;</a>
-          </div>
-        </div>
+      <div class="contact-social-pills fade-up">
+        <a href="mailto:vlalithreddy02@gmail.com" class="social-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Say Hello
+        </a>
+        <a href="https://www.linkedin.com/in/lalith-kumar-reddy-821621379/" target="_blank" class="social-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          LinkedIn &#x2197;
+        </a>
+        <a href="https://github.com/Lalith02-Kumar" target="_blank" class="social-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          GitHub &#x2197;
+        </a>
       </div>
-      <div class="work-item">
-        <div class="work-header">
-          <div class="work-num">02</div>
-          <h3 class="work-title"><span class="work-slash">/</span>Skilltern — Internship matching platform</h3>
-        </div>
-        <p class="work-desc">A web-based platform that matches student skills with real internship opportunities.
-          Features responsive profile creation, internship browsing, and smart filtering and recommendation logic.</p>
-        <div class="work-meta">
-          <div class="work-tags">
-            <span class="wtag">HTML</span>
-            <span class="wtag">CSS</span>
-            <span class="wtag">JavaScript</span>
-          </div>
-          <div class="work-links">
-            <a href="https://github.com/Lalith02-Kumar/SkillTern" target="_blank" class="work-link">GitHub &#x2197;</a>
-          </div>
-        </div>
-      </div>
-      <div class="work-item">
-        <div class="work-header">
-          <div class="work-num">03</div>
-          <h3 class="work-title"><span class="work-slash">/</span>Portfolio — Personal developer site</h3>
-        </div>
-        <p class="work-desc">This portfolio site — built with a montone.studio-inspired lavender aesthetic, cursor
-          spotlight effect, and a Node.js + MySQL backend for the contact form.</p>
-        <div class="work-meta">
-          <div class="work-tags">
-            <span class="wtag">HTML</span>
-            <span class="wtag">CSS</span>
-            <span class="wtag">JavaScript</span>
-            <span class="wtag">Node.js</span>
-            <span class="wtag">MySQL</span>
-          </div>
-          <div class="work-links">
-            <a href="https://github.com/Lalith02-Kumar" target="_blank" class="work-link">GitHub &#x2197;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Profiles Section -->
-  <section class="section" id="profiles">
-    <span class="section-label">Find me coding</span>
-    <p class="profiles-intro">I actively solve problems across these platforms.</p>
-    <div class="profiles-row">
-      <a href="https://leetcode.com/u/lalith_87/" target="_blank" class="profile-link">LeetCode</a>
-      <a href="https://www.codechef.com/users/lalith_87" target="_blank" class="profile-link">CodeChef</a>
-      <a href="https://www.hackerrank.com/profile/lalith_87" target="_blank" class="profile-link">HackerRank</a>
-      <a href="https://www.interviewbit.com/profile/v-lalith-kumar/" target="_blank" class="profile-link">InterviewBit</a>
-      <a href="https://codeforces.com/profile/vlalithreddy02" target="_blank" class="profile-link">Codeforces</a>
-    </div>
-  </section>
-
-  <!-- Certifications Section -->
-  <section class="section" id="certifications">
-    <span class="section-label">Certifications</span>
-    <div class="work-list">
-      <div class="work-item">
-        <div class="work-header">
-          <div class="work-num">01</div>
-          <h3 class="work-title"><span class="work-slash">/</span>Python Essentials 1 & 2</h3>
-        </div>
-        <p class="work-desc">Certified by Cisco — <a href="https://www.linkedin.com/posts/lalith-kumar-reddy-821621379_python-essentials-1-activity-7407101958873841664-UEQ7" target="_blank" style="color: inherit;">Python Essentials 1</a> and <a href="https://www.linkedin.com/posts/lalith-kumar-reddy-821621379_python-essentials-2-activity-7407102345437880321-0tTY" target="_blank" style="color: inherit;">Python Essentials 2</a>.</p>
-      </div>
-      <div class="work-item">
-        <div class="work-header">
-          <div class="work-num">02</div>
-          <h3 class="work-title"><span class="work-slash">/</span>Basics of Python & Python Foundation</h3>
-        </div>
-        <p class="work-desc">Certified by Infosys Springboard — <a href="https://www.linkedin.com/posts/lalith-kumar-reddy-821621379_basics-of-python-in-infosys-springboard-activity-7407100694056382464-aiZn" target="_blank" style="color: inherit;">Basics of Python</a> & <a href="https://www.linkedin.com/posts/lalith-kumar-reddy-821621379_python-foundation-activity-7407101432945971201-jn8k" target="_blank" style="color: inherit;">Python Foundation</a>.</p>
-      </div>
-      <div class="work-item">
-        <div class="work-header">
-          <div class="work-num">03</div>
-          <h3 class="work-title"><span class="work-slash">/</span>Problem Solving using C</h3>
-        </div>
-        <p class="work-desc">Certified by BYTS — <a href="https://www.linkedin.com/posts/lalith-kumar-reddy-821621379_byts-activity-7407105389307101184-AXNK" target="_blank" style="color: inherit;">View Certificate</a>.</p>
-      </div>
-      <div class="work-item">
-        <div class="work-header">
-          <div class="work-num">04</div>
-          <h3 class="work-title"><span class="work-slash">/</span>Professional Communication (STEP)</h3>
-        </div>
-        <p class="work-desc">Certified by The Hindu — Professional communication and workplace readiness.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="section" id="contact">
-    <span class="section-label">Get in touch</span>
-    <p class="contact-intro">
-      I'm open to internships, collaborations, and interesting projects. Drop me a message and I'll get back to you.
-    </p>
-
-    <div class="contact-form">
-      <form id="contactForm">
-        <div class="form-field">
-          <input type="text" id="name" required>
-          <label for="name">Name</label>
-        </div>
-        <div class="form-field">
-          <input type="email" id="email" required>
-          <label for="email">Email</label>
-        </div>
-        <div class="form-field">
-          <textarea id="message" rows="5" required></textarea>
-          <label for="message">Message</label>
-        </div>
-        <button type="submit" id="submitBtn" class="contact-submit">Send message &rarr;</button>
-      </form>
-
-      <div id="formSuccess" class="form-message" style="display: none;">
-        <p>Thanks! I'll get back to you soon.</p>
-      </div>
-      <div id="formError" class="form-message" style="display: none;">
-        <p>Something went wrong. Please try again.</p>
-      </div>
-    </div>
-
-    <div class="contact-social-pills fade-up">
-      <a href="mailto:vlalithreddy02@gmail.com" class="social-pill">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-        Say Hello
-      </a>
-      <a href="https://www.linkedin.com/in/lalith-kumar-reddy-821621379/" target="_blank" class="social-pill">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-        LinkedIn &#x2197;
-      </a>
-      <a href="https://github.com/Lalith02-Kumar" target="_blank" class="social-pill">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-        GitHub &#x2197;
-      </a>
-    </div>
-  </section>
-
-
-
-  <!-- Fixed bottom social bar -->
-  <div class="social-bar" id="socialBar">
-    <a href="mailto:vlalithreddy02@gmail.com" class="bottom-pill">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-      mail
-    </a>
-    <a href="https://github.com/Lalith02-Kumar" target="_blank" class="bottom-pill">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-      github
-    </a>
-    <a href="https://www.linkedin.com/in/lalith-kumar-reddy-821621379/" target="_blank" class="bottom-pill">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-      linkedin
-    </a>
-  </div>
-
+    </section>
+  </main>
 </body>
-
 </html>

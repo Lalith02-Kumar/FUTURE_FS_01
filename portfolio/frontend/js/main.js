@@ -63,29 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.1 });
 
-  const fadeSelectors = [
-    '.hero-sub',
-    '.hero-heading',
-    '.hero-bio',
-    '.hero-buttons',
-    '.section-label',
-    '.bio',
-    '.skills-group',
-    '.academic-info',
-    '.connect-link',
-    '.cv-link',
-    '.work-item',
-    '.profiles-intro',
-    '.profiles-row',
-    '.contact-intro',
-    '.contact-form',
-    '.contact-info'
-  ];
-
-  document.querySelectorAll(fadeSelectors.join(', ')).forEach(el => {
-    el.classList.add('fade-up');
-    observer.observe(el);
-  });
+  // Simply observe any element that has the fade-up class
+  const observeElements = () => {
+    document.querySelectorAll('.fade-up').forEach(el => {
+      observer.observe(el);
+    });
+  };
+  observeElements();
 
 
 
@@ -108,14 +92,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // Floating labels
   document.querySelectorAll('.form-field input, .form-field textarea').forEach(field => {
     const label = field.parentElement.querySelector('label');
-    field.addEventListener('focus', () => label.classList.add('filled'));
-    field.addEventListener('blur', () => {
-      if (!field.value.trim()) label.classList.remove('filled');
-    });
-    field.addEventListener('input', () => {
-      if (field.value.trim()) label.classList.add('filled');
-      else label.classList.remove('filled');
-    });
+    if (label) {
+      field.addEventListener('focus', () => label.classList.add('filled'));
+      field.addEventListener('blur', () => {
+        if (!field.value.trim()) label.classList.remove('filled');
+      });
+      field.addEventListener('input', () => {
+        if (field.value.trim()) label.classList.add('filled');
+        else label.classList.remove('filled');
+      });
+    }
   });
 
   // Contact form fetch
@@ -137,7 +123,12 @@ document.addEventListener('DOMContentLoaded', () => {
       formError.style.display = 'none';
 
       try {
-        const response = await fetch('/api/contact', {
+        // Use localhost:5000 for local development, otherwise relative path for Vercel
+        const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+          ? 'http://localhost:5000/api/contact' 
+          : '/api/contact';
+
+        const response = await fetch(apiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -170,6 +161,156 @@ document.addEventListener('DOMContentLoaded', () => {
         socialBar.classList.remove('hidden');
       } else {
         socialBar.classList.add('hidden');
+      }
+    });
+  }
+
+  // --- BLOG LOGIC ---
+  const blogModal = document.getElementById('blogModal');
+  const openBlogModalBtn = document.getElementById('openBlogModalBtn');
+  const closeBlogModalBtn = document.getElementById('closeBlogModalBtn');
+  const blogForm = document.getElementById('blogForm');
+  const blogSubmitBtn = document.getElementById('blogSubmitBtn');
+  const blogError = document.getElementById('blogError');
+  const blogListContainer = document.getElementById('blogListContainer');
+  const noBlogsMsg = document.getElementById('noBlogsMsg');
+
+  // Determine API URL (handle localhost vs Vercel)
+  const apiUrlBase = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+    ? 'http://localhost:5000/api' 
+    : '/api';
+
+  // Toggle modal
+  if (openBlogModalBtn && blogModal && closeBlogModalBtn) {
+    openBlogModalBtn.addEventListener('click', () => {
+      blogModal.classList.remove('hidden');
+    });
+    closeBlogModalBtn.addEventListener('click', () => {
+      blogModal.classList.add('hidden');
+      blogForm.reset();
+      blogError.style.display = 'none';
+    });
+    // Close on overlay click
+    blogModal.addEventListener('click', (e) => {
+      if (e.target === blogModal) {
+        blogModal.classList.add('hidden');
+        blogForm.reset();
+      }
+    });
+  }
+
+  // Fetch blogs
+  const fetchBlogs = async () => {
+    try {
+      console.log('Fetching blogs from:', `${apiUrlBase}/blogs`);
+      const response = await fetch(`${apiUrlBase}/blogs`);
+      if (!response.ok) throw new Error('Failed to fetch blogs');
+      const data = await response.json();
+      
+      // Always clear the container first
+      blogListContainer.innerHTML = '';
+      if (noBlogsMsg) blogListContainer.appendChild(noBlogsMsg);
+
+      if (data.blogs && data.blogs.length > 0) {
+        if (noBlogsMsg) noBlogsMsg.style.display = 'none';
+        
+        data.blogs.forEach(blog => {
+          const date = new Date(blog.created_at).toLocaleDateString('en-US', {
+            year: 'numeric', month: 'long', day: 'numeric'
+          });
+          
+          const blogCard = document.createElement('div');
+          blogCard.className = 'blog-card fade-up';
+          blogCard.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <span class="blog-date">${date}</span>
+              <button class="delete-blog-btn" data-id="${blog.id}" aria-label="Delete Blog" style="background: none; border: none; color: #ff4d4d; cursor: pointer; font-size: 1.5rem; padding: 0; line-height: 1;">&times;</button>
+            </div>
+            <h3 class="blog-title">${blog.title}</h3>
+            <div class="blog-content">${blog.content.replace(/\n/g, '<br>')}</div>
+          `;
+          blogListContainer.insertBefore(blogCard, noBlogsMsg);
+          observer.observe(blogCard);
+        });
+      } else {
+        if (noBlogsMsg) noBlogsMsg.style.display = 'block';
+        console.log('No blogs found');
+      }
+    } catch (err) {
+      console.error('Error fetching blogs:', err);
+    }
+  };
+
+  // Submit blog
+  if (blogForm) {
+    blogForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const title = document.getElementById('blogTitle').value;
+      const content = document.getElementById('blogContent').value;
+      
+      blogSubmitBtn.textContent = 'Publishing...';
+      blogSubmitBtn.disabled = true;
+      blogError.style.display = 'none';
+
+      try {
+        const response = await fetch(`${apiUrlBase}/blogs`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title, content })
+        });
+
+        if (response.ok) {
+          blogModal.classList.add('hidden');
+          blogForm.reset();
+          await fetchBlogs(); // Refresh list
+        } else {
+          throw new Error('Failed to post');
+        }
+      } catch (err) {
+        blogError.style.display = 'block';
+      } finally {
+        blogSubmitBtn.textContent = 'Publish Post';
+        blogSubmitBtn.disabled = false;
+      }
+    });
+  }
+
+  // Initial fetch
+  if (blogListContainer) {
+    fetchBlogs();
+
+    // Delegate delete events
+    blogListContainer.addEventListener('click', async (e) => {
+      const deleteBtn = e.target.closest('.delete-blog-btn');
+      if (deleteBtn) {
+        const id = deleteBtn.getAttribute('data-id');
+        console.log('Attempting to delete blog with ID:', id);
+        
+        if (confirm('Are you sure you want to delete this blog post?')) {
+          try {
+            const url = `${apiUrlBase}/blogs/${id}`;
+            console.log('Delete URL:', url);
+            
+            const response = await fetch(url, {
+              method: 'DELETE'
+            });
+            
+            console.log('Delete response status:', response.status);
+            
+            if (response.ok) {
+              console.log('Blog deleted successfully');
+              await fetchBlogs();
+            } else {
+              const errorData = await response.json().catch(() => ({}));
+              console.error('Failed to delete blog:', errorData);
+              alert('Failed to delete blog. ' + (errorData.message || ''));
+            }
+          } catch (err) {
+            console.error('Error deleting blog:', err);
+            alert('An error occurred while deleting the blog.');
+          }
+        }
       }
     });
   }
