@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "portfolio/backend/server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "portfolio/frontend/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/portfolio/backend/server.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/portfolio/frontend/$1"
+    }
+  ]
+}
