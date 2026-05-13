@@ -124,9 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         // Use localhost:5000 for local development, otherwise relative path for Vercel
-        const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-          ? 'http://localhost:5000/api/contact' 
-          : '/api/contact';
+        const apiUrl = '/api/contact';
 
         const response = await fetch(apiUrl, {
           method: 'POST',
@@ -187,9 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const noBlogsMsg = document.getElementById('noBlogsMsg');
 
   // Determine API URL (handle localhost vs Vercel)
-  const apiUrlBase = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-    ? 'http://localhost:5000/api' 
-    : '/api';
+  const apiUrlBase = '/api';
 
   // Toggle modal
   if (openBlogModalBtn && blogModal && closeBlogModalBtn) {
