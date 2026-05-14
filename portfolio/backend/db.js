@@ -17,14 +17,17 @@ const connectionConfig = process.env.DATABASE_URL || {
 const pool = mysql.createPool(connectionConfig);
 
 // Basic connection test with detailed logging
-console.log(`📡 Attempting to connect to database at ${connectionConfig.host || 'unknown host'}:${connectionConfig.port || 3306} as user ${connectionConfig.user || 'unknown user'}...`);
+if (typeof connectionConfig === 'string') {
+  console.log('📡 Attempting to connect using DATABASE_URL...');
+} else {
+  console.log(`📡 Attempting to connect to database at ${connectionConfig.host || 'unknown host'}:${connectionConfig.port || 3306} as user ${connectionConfig.user || 'unknown user'}...`);
+}
 
 pool.getConnection((err, connection) => {
   if (err) {
     console.error('❌ Database connection failed!');
     console.error('Error Code:', err.code);
     console.error('Error Message:', err.message);
-    if (err.stack) console.error('Stack Trace:', err.stack);
   } else {
     console.log('✅ Database connected successfully!');
     connection.release();
